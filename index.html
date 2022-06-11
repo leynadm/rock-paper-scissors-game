@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* Action plan 
+        1. Prompt the user to choose one of the three options 
+        - rock, paper or scissors
+        2. Make the computer choose one of the options itself
+        3. Compare the two options
+        4. Choose the winner
+        5. Display the result
+        */
+        
+        /* Determine and return computer's pick option */
+
+        function returnComputerPlay() {
+
+            let randomNumber = Math.floor(Math.random() * 3);
+            console.log(randomNumber);
+            let computerPlayResult;
+
+            if (randomNumber==0){
+                computerPlayResult = "ROCK";
+            } else if (randomNumber==1) {
+                computerPlayResult = "PAPER";
+            } else {
+                computerPlayResult = "SCISSORS";
+            }
+            
+            return computerPlayResult;
+        }
+
+        /* Returns the player selection */
+        function returnPlayerSelection(){
+            
+            let KeepGoing = true;
+
+            while(KeepGoing) {
+                
+                let playerChoice = prompt("Please choose between 'Rock', 'Paper' or 'Scissors':")
+            
+                playerChoice = playerChoice.toUpperCase();
+                console.log(playerChoice);
+
+                if (playerChoice == 'ROCK' || playerChoice == 'PAPER' || playerChoice == 'SCISSORS') {
+                    KeepGoing = false;
+                } else{
+                    alert("You can only choose 'ROCK', 'PAPER' or 'SCISSORS'. Please try again.");
+                }   
+
+                return playerChoice;
+            }
+            
+            
+
+        }
+
+
+
+    </script>
+</body>
+</html>
