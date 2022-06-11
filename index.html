@@ -19,11 +19,10 @@
         */
         
         /* Determine and return computer's pick option */
-
         function returnComputerPlay() {
 
             let randomNumber = Math.floor(Math.random() * 3);
-            console.log(randomNumber);
+
             let computerPlayResult;
 
             if (randomNumber==0){
@@ -37,32 +36,98 @@
             return computerPlayResult;
         }
 
+        /*---------------------------------------------------------------------------------*/
+
         /* Returns the player selection */
+
         function returnPlayerSelection(){
             
             let KeepGoing = true;
+            let playerChoice;
 
             while(KeepGoing) {
                 
-                let playerChoice = prompt("Please choose between 'Rock', 'Paper' or 'Scissors':")
+                playerChoice = prompt("Please choose between 'Rock', 'Paper' or 'Scissors':")
             
                 playerChoice = playerChoice.toUpperCase();
-                console.log(playerChoice);
 
                 if (playerChoice == 'ROCK' || playerChoice == 'PAPER' || playerChoice == 'SCISSORS') {
                     KeepGoing = false;
                 } else{
                     alert("You can only choose 'ROCK', 'PAPER' or 'SCISSORS'. Please try again.");
                 }   
-
-                return playerChoice;
             }
-            
-            
 
+            return playerChoice;
         }
+        /*---------------------------------------------------------------------------------*/
 
+        function playRound(playerSelection,computerSelection){
 
+            playerSelection = returnPlayerSelection();
+            computerSelection = returnComputerPlay();
+
+            let roundResult;
+            let roundWiner;
+
+            if ((playerSelection == 'ROCK') && ((computerSelection == 'PAPER')) ){
+                roundResult = "You Lose! Paper beats Rock";
+                roundWiner = "CPU";
+            } else if ((playerSelection == 'ROCK') && (computerSelection == 'SCISSORS')){
+                roundResult = "You Win! Rock beats Paper!";
+                roundWiner = "PLAYER";
+            } else if ((playerSelection == 'PAPER') && (computerSelection == 'ROCK')){
+                roundResult = "You Win! Paper beats Rock!";
+                roundWiner = "PLAYER";
+            } else if ((playerSelection == 'PAPER') && (computerSelection == 'SCISSORS')){
+                roundResult = "You Lose! Scissors beats Paper";
+                roundWiner = "CPU";
+            } else if ((playerSelection == 'SCISSORS') && (computerSelection == 'ROCK')) {
+                roundResult = "You Lose! Rock beats Scissors";
+                roundWiner = "CPU";
+            } else if ((playerSelection == 'SCISSORS') && (computerSelection == 'PAPER')){
+                roundResult = "You Win! Scissors beats Paper!";    
+                roundWiner = "PLAYER";
+            } else {
+                roundResult = "It's a tie!";
+                roundWiner = "NO WINNER";
+            }
+
+            return roundWiner;
+        } 
+
+        function game() {
+            
+            let gamesPlayed = 0;
+            let playerPoints = 0;
+            let CPUPoints = 0;
+
+            for (let i = 0; i < 5; i++) {
+
+                let singleRoundResult = playRound();
+
+                if (singleRoundResult == "PLAYER"){
+                    
+                    playerPoints++;
+                    gamesPlayed++;
+
+                    console.log(`Player won! Player has ${playerPoints} while CPU has ${CPUPoints}!` );
+
+                } else if (singleRoundResult == "CPU"){
+       
+                    CPUPoints++;
+                    gamesPlayed++;
+
+                    console.log(`CPU won! CPU has ${CPUPoints} while Player has ${playerPoints}!` );
+
+                } else if (singleRoundResult=="NO WINNER") {
+
+                    gamesPlayed++;
+                    console.log(`It's a tie! CPU has ${CPUPoints} while Player has ${playerPoints} and ${gamesPlayed} games were played!`)
+                }
+
+            }
+        }
 
     </script>
 </body>
