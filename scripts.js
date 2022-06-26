@@ -116,13 +116,13 @@ function roundTrack(){
 }
 
 function checkGameWinner(){
-    if (playerScoreCounter = 5){
+    if (playerScoreCounter == 5){
         showRoundResult.textContent = "Amazingly done! Now leave as a winner!"
         CPUScore.textContent = 0;
         playerScore.textContent = 0;
         playerScoreCounter = 0;
         CPUScoreCounter = 0;
-    } else if (CPUScoreCounter = 5){
+    } else if (CPUScoreCounter == 5){
         showRoundResult.textContent = "You lost! Leave and don't look at me!"
         CPUScore.textContent = 0;
         playerScore.textContent = 0;
@@ -130,10 +130,6 @@ function checkGameWinner(){
         CPUScoreCounter = 0;    
     }
 }
-
-    
-
-
 
 // /*---------------------------------------------------------------------------------*/
 
