@@ -4,131 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <script>
 
-        /* Action plan 
-        1. Prompt the user to choose one of the three options 
-        - rock, paper or scissors
-        2. Make the computer choose one of the options itself
-        3. Compare the two options
-        4. Choose the winner
-        5. Display the result
-        */
-        
-        /* Determine and return computer's pick option */
-        function returnComputerPlay() {
+    <!--Action plan
+    1. Import on the main page the rock, paper and scissors images - Done
+    2. Have a start game button at the bottom of the page- Done
+    3. when click the start button, prompt the user to pick an image
+    4. based on the image picked, translate it into the actual option
+    5. compare it with what the computer picked
+    
+    -->
+<div class = "container">
+    <div class="images">
+        <div class="image-container">
+            <img class="image" id="dwayne" src="img/rock.jpg" alt="A picture of a rock">
+            <p>Dwayne</p>
+        </div>
+        <div class="image-container">
+            <img class="image" id="paperman" src="img/paper.jpeg" alt="A picture of some paper">
+            <p>Paperman</p>
+        </div>
+        <div class="image-container">
+            <img class="image" id="edward" src="img/scissors.jpg" alt="A picture of some scissors">
+            <p>Edward</p>
+        </div>
+    </div>
 
-            let randomNumber = Math.floor(Math.random() * 3);
+    <div class = "result">
+        <div>Player Score
+            <div class="score" id="playerScore">-</div>
+        </div>
+        <div class="playing-field">You chose:
+            <div class="playing-field" id="player-choice">Scissors</div>
+            <div class="playing-field">and the CPU chose:</div>
+            <div class= "playing-field" id="CPU-choice">Computer</div>
+        </div>
+        <div>Computer Score
+            <div class="score" id="CPUScore">-</div>
+        </div>
+    </div>
 
-            let computerPlayResult;
+    <div class ="show-round-result">
+        Get reeeaaaadyyy to ruuuuuummmmbllleeeee!!!
+    </div>
+</div>
 
-            if (randomNumber==0){
-                computerPlayResult = "ROCK";
-            } else if (randomNumber==1) {
-                computerPlayResult = "PAPER";
-            } else {
-                computerPlayResult = "SCISSORS";
-            }
-            
-            return computerPlayResult;
-        }
-
-        /*---------------------------------------------------------------------------------*/
-
-        /* Returns the player selection */
-
-        function returnPlayerSelection(){
-            
-            let KeepGoing = true;
-            let playerChoice;
-
-            while(KeepGoing) {
-                
-                playerChoice = prompt("Please choose between 'Rock', 'Paper' or 'Scissors':")
-            
-                playerChoice = playerChoice.toUpperCase();
-
-                if (playerChoice == 'ROCK' || playerChoice == 'PAPER' || playerChoice == 'SCISSORS') {
-                    KeepGoing = false;
-                } else{
-                    alert("You can only choose 'ROCK', 'PAPER' or 'SCISSORS'. Please try again.");
-                }   
-            }
-
-            return playerChoice;
-        }
-        /*---------------------------------------------------------------------------------*/
-
-        function playRound(playerSelection,computerSelection){
-
-            playerSelection = returnPlayerSelection();
-            computerSelection = returnComputerPlay();
-
-            let roundResult;
-            let roundWiner;
-
-            if ((playerSelection == 'ROCK') && ((computerSelection == 'PAPER')) ){
-                roundResult = "You Lose! Paper beats Rock";
-                roundWiner = "CPU";
-            } else if ((playerSelection == 'ROCK') && (computerSelection == 'SCISSORS')){
-                roundResult = "You Win! Rock beats Paper!";
-                roundWiner = "PLAYER";
-            } else if ((playerSelection == 'PAPER') && (computerSelection == 'ROCK')){
-                roundResult = "You Win! Paper beats Rock!";
-                roundWiner = "PLAYER";
-            } else if ((playerSelection == 'PAPER') && (computerSelection == 'SCISSORS')){
-                roundResult = "You Lose! Scissors beats Paper";
-                roundWiner = "CPU";
-            } else if ((playerSelection == 'SCISSORS') && (computerSelection == 'ROCK')) {
-                roundResult = "You Lose! Rock beats Scissors";
-                roundWiner = "CPU";
-            } else if ((playerSelection == 'SCISSORS') && (computerSelection == 'PAPER')){
-                roundResult = "You Win! Scissors beats Paper!";    
-                roundWiner = "PLAYER";
-            } else {
-                roundResult = "It's a tie!";
-                roundWiner = "NO WINNER";
-            }
-
-            return roundWiner;
-        } 
-
-        function game() {
-            
-            let gamesPlayed = 0;
-            let playerPoints = 0;
-            let CPUPoints = 0;
-
-            for (let i = 0; i < 5; i++) {
-
-                let singleRoundResult = playRound();
-
-                if (singleRoundResult == "PLAYER"){
-                    
-                    playerPoints++;
-                    gamesPlayed++;
-
-                    console.log(`Player won! Player has ${playerPoints} while CPU has ${CPUPoints}!` );
-
-                } else if (singleRoundResult == "CPU"){
-       
-                    CPUPoints++;
-                    gamesPlayed++;
-
-                    console.log(`CPU won! CPU has ${CPUPoints} while Player has ${playerPoints}!` );
-
-                } else if (singleRoundResult=="NO WINNER") {
-
-                    gamesPlayed++;
-                    console.log(`It's a tie! CPU has ${CPUPoints} while Player has ${playerPoints} and ${gamesPlayed} games were played!`)
-                }
-
-            }
-        }
-
-    </script>
+<script src="scripts.js"></script>
 </body>
 </html>

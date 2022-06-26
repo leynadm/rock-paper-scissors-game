@@ -1,0 +1,71 @@
+@import url(//fonts.googleapis.com/css?family=Staatliches);
+
+body{
+    font-family: 'Staatliches';
+}
+
+.images{
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+.image{
+    width: 500px;
+    height: auto;
+    border-style: solid;
+    margin: 5px;
+    transition: all 0.4s;
+}
+
+.image-container{
+    text-align: center;
+    font-size: 64px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 24px;
+}
+
+.start-game-btn{
+    font-size: large;
+
+}
+
+.container{
+    align-items: center;
+}
+
+.result{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 32px;
+    align-items: center;
+}
+
+.score{
+    display: flex;
+    justify-content: center;
+    font-size: 64px;
+    margin: 48px;
+}
+
+.playing-field{
+    display: block;
+    text-align: center;
+    align-items: center;
+}
+
+.show-round-result{
+    display: flex;
+    justify-content: center;
+    font-size: 80px;
+}
+
+.fighting{
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 10px #ffc600;
+}
